@@ -7,13 +7,23 @@ public class UIController : MonoBehaviour
 {
     private Text scoreUIText;
     private string scoreText = "0";
-
+    private GameObject restartButton;
     void Awake()
     {
         scoreUIText = GameObject.Find("/UI/ScoreText").GetComponent<Text>();
+        restartButton = GameObject.Find("/UI/Restart");
     }
 
-    public void UpdateScore()
+    public void ShowRestartButton()
+    {
+        restartButton.SetActive(true);
+    }
+    public void HideRestartButton()
+    {
+        restartButton.SetActive(false);
+    }
+
+     public void UpdateScore()
     {
         scoreText = GameManager.GetScore().ToString();
         scoreUIText.text = scoreText;
